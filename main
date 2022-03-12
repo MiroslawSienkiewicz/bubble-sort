@@ -1,0 +1,48 @@
+#include <iostream>
+#include <cstdlib>
+#include <time.h>
+
+using namespace std;
+
+int main()
+{
+    srand(time(NULL));
+    int tab[20],x;
+//wypelnienie tablicy losowymi elementami z przedzialu od 1 do 100
+
+    for(int i = 0; i< 20; i++)
+    {
+        tab[i] = rand() % 100 + 1;
+    }
+
+    //wyswietlenie nieposortowanej tablicy
+    for(int i = 0; i< 20; i++)
+    {
+        cout << tab[i] << ", ";
+    }
+
+
+    //algorytm bubble sort, polega na iteorwaniu przez kolejne pozycje w tablicy i jesli w pozycji z prawej liczba jest mniejsza to jest zamienieana miejscami z ta z lewej
+
+    for (int j = 0; j <= 20; j++)   // j,i = 20 poniewaz tyle jest elementow talicy
+    {
+        for (int i = 20; i >= 1 + j; i--)   // i-- pozwala pomijac ostatni element tablicy ktory po kazdym sortowaniu zawsze jest najwieksza liczba na ostatniej pozycji
+        {
+            if (tab[i] < tab[i-1])          //sprawdzenie czy sasiedznia wartosc jest wieksza
+            {
+                x = tab[i-1];               //x jest zmienna pmocnicza przechowujaca element ktory trzeba zamienic
+                tab[i-1] = tab[i];          //zamiana elementow miejscami jesli po prawej stronie jest liczba wieksza
+                tab[i] = x;
+            }
+        }
+    }
+
+    //wyswietlenie posortowanej tablicy
+    for(int i = 0; i< 20; i++)
+    {
+        cout << endl;
+        cout << tab[i] << ", ";
+    }
+
+    return 0;
+}
